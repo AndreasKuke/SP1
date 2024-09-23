@@ -1,4 +1,4 @@
-class MouseTrail {
+class MouseTrail { //Mouse trail following mouse to give more depth and character.
   int length;
   float[] xPos;
   float[] yPos;
@@ -25,7 +25,7 @@ class MouseTrail {
     for (int i= 0; i < length; i++) {
     noStroke();
     fill(255-i*5);
-      ellipse(xPos[i], yPos[i], 10, 10);
+      ellipse(xPos[i], yPos[i], 20, 20);
     }
   }
 }
