@@ -11,6 +11,7 @@ class RectRandom { //Designs map with random rect calls creating obstacles.
     y = random(height);
   }
   void display() {
+    fill(255);
     rect(x, y, w, h);
   }
   boolean isMouseOver() { //Checks if mouse is over rectangle to make sure you will lose.
@@ -18,7 +19,7 @@ class RectRandom { //Designs map with random rect calls creating obstacles.
   }
 }
 
-RectRandom[] rectangles; //Array to hold rect.
+//RectRandom[] rectangles; //Array to hold rect.
 
 void rectSetup() {
   rectangles = new RectRandom[rectNum];

@@ -8,14 +8,15 @@
 int trailLength = 50; //Choose amount of ellipses for trail.
 int rectNum = 65; //Choose amount of rectangles you want to avoid.
 
-//int numCoins = 10; //Amount of coins falling. ERROR
+int numCoins = 10; //Amount of coins falling. ERROR
 
 //SETTINGS------------------------------------------------------------
 
 Rules rules;
 MouseTrail newTrail;
 boolean lost = false; //Starts with false since no collision with rect.
-//Coins[] coins1 = new Coins[numCoins];
+Coins[] coins1 = new Coins[numCoins];
+RectRandom[] rectangles;
 
 void setup() {
   size (800, 800);
@@ -23,10 +24,13 @@ void setup() {
   rectSetup();
   newTrail = new MouseTrail(trailLength);
   rules = new Rules(rectangles);
+  
+  coins1 = new Coins[numCoins];
+  coinSetup();
 }
 
 void draw() {
-  background (255);
+  background (0);
 
   if (lost) {
     fill(255, 0, 0, 100);
@@ -52,6 +56,10 @@ void gameLoop() {
 
   if (rules.collision()) {
     lost = true; // If collision with rect lost = true
+  }
+  for (Coins coin : coins1) {
+  coin.coinUpdate();
+  coin.coinDisplay();
   }
 }
 
