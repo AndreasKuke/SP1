@@ -12,11 +12,13 @@ int numCoins = 10; //Amount of coins falling. ERROR
 
 //SETTINGS------------------------------------------------------------
 
+//Class calls and extra-----------------------------------------------
 Rules rules;
 MouseTrail newTrail;
 boolean lost = false; //Starts with false since no collision with rect.
-Coins[] coins1 = new Coins[numCoins];
+ArrayList<Coins> coins1;
 RectRandom[] rectangles;
+//--------------------------------------------------------------------
 
 void setup() {
   size (800, 800);
@@ -25,7 +27,7 @@ void setup() {
   newTrail = new MouseTrail(trailLength);
   rules = new Rules(rectangles);
   
-  coins1 = new Coins[numCoins];
+  coins1 = new ArrayList<Coins>();
   coinSetup();
 }
 
@@ -46,6 +48,7 @@ void draw() {
   }
 }
 
+//Game loop to help reset state if collision is detected------------
 void gameLoop() {
   //Map setup with rectRandom
   rectDraw();
@@ -57,21 +60,29 @@ void gameLoop() {
   if (rules.collision()) {
     lost = true; // If collision with rect lost = true
   }
+  collisionCoin();
+  
   for (Coins coin : coins1) {
   coin.coinUpdate();
   coin.coinDisplay();
   }
 }
 
+//------------------------------------------------------------------
+
+//Pressing the 'r' key resets game after lost = true; to reset the instance.
 void keyPressed() {
   if (lost && key == 'r' || lost && key == 'R') {
     gameReset();
   }
 }
+//------------------------------------------------------------------
 
+//Startup credentials for new game, sets lost = false;, makes a new set of rectangles, generates new trail and rules.
 void gameReset() {
   lost = false;
   rectSetup();
   newTrail = new MouseTrail(trailLength);
   rules = new Rules(rectangles);
 }
+//------------------------------------------------------------------
