@@ -24,7 +24,7 @@ class MouseTrail { //Mouse trail following mouse to give more depth and characte
   void display() {
     for (int i= 0; i < length; i++) {
     noStroke();
-    fill(255-i*5);
+    fill(255-i*5,255-i*2,255-i*4);
       ellipse(xPos[i], yPos[i], 20, 20);
     }
   }

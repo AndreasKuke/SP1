@@ -20,7 +20,7 @@ class Coins {
     }
   }
   void coinDisplay() {
-    fill(255, 250, 205);
+    fill(255, 243, 0);
     ellipse(x, y, size,size);
   }
 }
