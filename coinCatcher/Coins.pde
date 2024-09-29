@@ -20,7 +20,9 @@ class Coins {
     }
   }
   void coinDisplay() {
-    fill(255, 243, 0);
+    fill(255, 202, 10);
+    strokeWeight(2);
+    stroke(172,136,0);
     ellipse(x, y, size, size);
   }
   boolean isMouseOver(){
@@ -30,14 +32,17 @@ class Coins {
 void coinSetup() {
   for (int i = 0; i < numCoins; i++) {
     float coinYPos = random(-height, 0);
-    coins1.add(new Coins(random(width), coinYPos, 20, random(1, 5)));
+    coinsList.add(new Coins(random(width), coinYPos, 20, random(1, 5)));
   }
 }
+ int score;
 void collisionCoin() {
-  for (int i = coins1.size()-1; i>=0; i--) {
-    Coins coin = coins1.get(i);
+  for (int i = coinsList.size()-1; i>=0; i--) {
+    Coins coin = coinsList.get(i);
     if (coin.isMouseOver()) {
-      coins1.remove(i);
+      coinsList.remove(i);
+      score++;
+      println(score);
     }
   }
 }
