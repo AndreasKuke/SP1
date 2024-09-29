@@ -8,7 +8,7 @@
 //SETTINGS------------------------------------------------------------
 int trailLength = 50; //Choose amount of ellipses for trail.
 int rectNum = 65; //Choose amount of rectangles you want to avoid.
-int numCoins = 10; //Amount of coins falling. ERROR
+int numCoins = 1; //Amount of coins falling. ERROR
 //SETTINGS------------------------------------------------------------
 
 //Class calls and extra-----------------------------------------------
@@ -49,6 +49,8 @@ void draw() {
     textSize(40);
     textAlign(CENTER);
     text("You won!", width/2, height/2);
+    textSize(25);
+    text("Press 'R' to restart", width/2, height/2+40);
   } else {
     gameLoop();
   }
@@ -70,7 +72,6 @@ void gameLoop() {
   if (score == numCoins) {
     won = true; // If score = max amount of coins collected, turn true.
   }
-  //Insert Win boolean here for when true.
   collisionCoin();
 
   for (Coins coin : coinsList) {
@@ -85,6 +86,10 @@ void gameLoop() {
 void keyPressed() {
   if (lost && key == 'r' || lost && key == 'R') {
     gameReset();
+  } else {
+    if (won && key == 'r' || won && key == 'R') {
+      gameReset();
+    }
   }
 }
 //------------------------------------------------------------------
@@ -92,6 +97,7 @@ void keyPressed() {
 //Startup credentials for new game, sets lost = false;, makes a new set of rectangles, generates new trail and rules.
 void gameReset() {
   lost = false;
+  won = false;
   rectSetup();
   newTrail = new MouseTrail(trailLength);
   rules = new Rules(rectangles);
