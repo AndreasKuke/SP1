@@ -8,4 +8,5 @@ My take at making a game including all the tasks we were given such as:
   I take this with me as experience for next time and will try to make it better.
 
   Student name: Andreas Kuke Marslev
+  
   Student mail: cph-am565@cphbusiness.dk
